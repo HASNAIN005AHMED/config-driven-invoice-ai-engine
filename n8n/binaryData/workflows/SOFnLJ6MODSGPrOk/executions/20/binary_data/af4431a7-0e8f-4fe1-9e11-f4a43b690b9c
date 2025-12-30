@@ -1,0 +1,49 @@
+{
+  "header": {
+    "invoice_no": "string",
+    "invoice_date": "date",
+    "due_date": "date",
+    "kid": "string",
+    "payment_type": "string",
+    "currency": "string"
+  },
+  "customer": {
+    "customer_no": "string",
+    "customer_name": "string",
+    "organization_no": "string",
+    "customer_email": "string"
+  },
+  "postal_address": {
+    "line_1": "string",
+    "line_2": "string|null",
+    "postal_no": "string",
+    "city": "string",
+    "country": "string"
+  },
+  "delivery_address": {
+    "line_1": "string",
+    "line_2": "string|null",
+    "postal_no": "string",
+    "city": "string",
+    "country": "string"
+  },
+  "contact": {
+    "first_name": "string",
+    "last_name": "string"
+  },
+  "order_lines": [
+    {
+      "prod_no": "string",
+      "prod_name": "string",
+      "description": "string",
+      "count": "number",
+      "unit_price": "number",
+      "unit": "string",
+      "discount": "number|null",
+      "vat_code": "string"
+    }
+  ],
+  "reference_no": "string",
+  "paid_amount": "number",
+  "comment_2": "string|null"
+}

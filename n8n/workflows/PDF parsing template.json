@@ -1,0 +1,795 @@
+{
+  "name": "PDF parsing template",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -1920,
+        -384
+      ],
+      "id": "c982faa4-0ee1-4cad-9a2a-073319fef79a",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "fileSelector": "/home/node/.n8n-files/configs/entities.json",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1.1,
+      "position": [
+        -1248,
+        -576
+      ],
+      "id": "9bca5145-e95b-47ea-a773-b01a06df8809",
+      "name": "Read/Write Files from Disk"
+    },
+    {
+      "parameters": {
+        "fileSelector": "/home/node/.n8n-files/invoices/sample_invoice.pdf",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1.1,
+      "position": [
+        -1248,
+        -768
+      ],
+      "id": "305659d4-104a-4b21-aefa-6210bdf77d85",
+      "name": "Read/Write Files from Disk1"
+    },
+    {
+      "parameters": {
+        "operation": "pdf",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1.1,
+      "position": [
+        -1024,
+        -768
+      ],
+      "id": "5c28c7a9-4461-4d97-9c65-38b569614ea8",
+      "name": "Extract from File"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "37f4adc4-ebc2-48a0-9894-0264731b6ac4",
+              "name": "Invoice Text",
+              "value": "={{ $json.text }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -800,
+        -768
+      ],
+      "id": "0b3b34fd-3886-4b07-be8b-2bfe4b46f6ae",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "operation": "fromJson",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1.1,
+      "position": [
+        -1024,
+        -576
+      ],
+      "id": "cb0140a1-bd9c-4900-9879-5fe0920837f4",
+      "name": "Extract from File1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "82dd6458-339d-4e5a-8254-71c383526e2d",
+              "name": "entities",
+              "value": "={{ $json.data }}",
+              "type": "object"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -800,
+        -576
+      ],
+      "id": "ff2e3605-e96c-47be-9967-cec5503b5b0e",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "fileSelector": "/home/node/.n8n-files/configs/rules.json",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1.1,
+      "position": [
+        -1248,
+        -384
+      ],
+      "id": "0e21c25d-0719-4d76-9f11-3d8c094d7816",
+      "name": "Read/Write Files from Disk2"
+    },
+    {
+      "parameters": {
+        "operation": "fromJson",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1.1,
+      "position": [
+        -1024,
+        -384
+      ],
+      "id": "9595061b-6ff8-498d-bd5e-51ce8318ce9d",
+      "name": "Extract from File2"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a878cfca-d50c-4e82-a328-7d9dbd0c5a99",
+              "name": "rules",
+              "value": "={{ $json.data }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -800,
+        -384
+      ],
+      "id": "738d6ca7-ab64-4f95-b4b9-47f215550817",
+      "name": "Edit Fields2"
+    },
+    {
+      "parameters": {
+        "fileSelector": "/home/node/.n8n-files/configs/output_schema.json",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1.1,
+      "position": [
+        -1248,
+        -192
+      ],
+      "id": "b39bf579-efe2-4d7c-8361-50d277525edd",
+      "name": "Read/Write Files from Disk3"
+    },
+    {
+      "parameters": {
+        "operation": "fromJson",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1.1,
+      "position": [
+        -1024,
+        -192
+      ],
+      "id": "57ecc37b-4f5c-464e-8084-d76d886e15fe",
+      "name": "Extract from File3"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "3d534a83-d9c9-4f1e-b171-9d26d6e8df55",
+              "name": "output_schema",
+              "value": "={{ $json.data }}",
+              "type": "object"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -800,
+        -192
+      ],
+      "id": "6349ba54-3c2c-4b68-9328-4d5a0dc791b4",
+      "name": "Edit Fields3"
+    },
+    {
+      "parameters": {
+        "fileSelector": "/home/node/.n8n-files/configs/ai_prompts.json",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1.1,
+      "position": [
+        -1248,
+        0
+      ],
+      "id": "c50155f6-f8fe-4afc-b733-8b1340bdd876",
+      "name": "Read/Write Files from Disk4"
+    },
+    {
+      "parameters": {
+        "operation": "fromJson",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1.1,
+      "position": [
+        -1024,
+        0
+      ],
+      "id": "12d8568e-b34d-46b0-80ef-3fd63cc64dbc",
+      "name": "Extract from File4"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "d916e512-b136-4697-81a9-44ad5521cf85",
+              "name": "ai_prompts",
+              "value": "={{ $json.data }}",
+              "type": "object"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -800,
+        0
+      ],
+      "id": "e89fc7ff-28a3-4315-8020-a2568f1d50b4",
+      "name": "Edit Fields4"
+    },
+    {
+      "parameters": {
+        "numberInputs": 5
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        -576,
+        -432
+      ],
+      "id": "bd57d44c-a094-443a-893b-e6b66eaafb43",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "jsCode": "// This code node outputs 5 items to trigger 5 parallel branches\n\nconst items = [];\n\nfor (let i = 0; i < 5; i++) {\n  items.push({\n    json: {\n      branchId: i + 1,\n      branchName: `Branch ${i + 1}`,\n      timestamp: new Date().toISOString()\n    }\n  });\n}\n\nreturn items;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1696,
+        -384
+      ],
+      "id": "542ec92d-addb-4f0d-9ff4-66297ecff1d0",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.branchId }}",
+                    "rightValue": 1,
+                    "operator": {
+                      "type": "number",
+                      "operation": "equals"
+                    },
+                    "id": "bee941b8-2a68-4661-87cf-759267a9fe46"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "6d2a50f5-44cb-450c-9184-16ef1d44185a",
+                    "leftValue": "={{ $json.branchId }}",
+                    "rightValue": 2,
+                    "operator": {
+                      "type": "number",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "716b2e38-290e-4d71-bc1d-aa2cd343e7ae",
+                    "leftValue": "={{ $json.branchId }}",
+                    "rightValue": 3,
+                    "operator": {
+                      "type": "number",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "96dc1301-4ae1-4ccf-a1eb-0ec5dc5d90a0",
+                    "leftValue": "={{ $json.branchId }}",
+                    "rightValue": 4,
+                    "operator": {
+                      "type": "number",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "37ad2a9f-b486-417e-b062-f31d9e1ebea3",
+                    "leftValue": "={{ $json.branchId }}",
+                    "rightValue": 5,
+                    "operator": {
+                      "type": "number",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        -1472,
+        -432
+      ],
+      "id": "1f6a5ca8-5970-4f3f-a131-46d0cb0a79f2",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = $input.all();\n\nconst result = {};\n\nfor (const item of items) {\n  Object.assign(result, item.json);\n}\n\n// Normalize keys\nreturn [{\n  invoice_text: result[\"Invoice Text\"] || result.invoice_text,\n  entities: result.entities,\n  rules: result.rules,\n  output_schema: result.output_schema,\n  system_prompt: result.ai_prompts.system_prompt,\n  user_prompt: result.ai_prompts.user_prompt\n}];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -352,
+        -384
+      ],
+      "id": "3d3a5bee-46e0-4c3b-8715-5bd82b914248",
+      "name": "Normalize Payload"
+    },
+    {
+      "parameters": {
+        "jsCode": "return [{\n  system_prompt: $input.first().json.system_prompt,\n  user_prompt: `\nYou must extract ALL possible fields defined below.\n\nRules:\n- If a field is missing, return null\n- Dates must be ISO format (YYYY-MM-DD)\n- order_lines MUST be an array\n- Do NOT merge multiple order lines into one\n- Do NOT infer values\n\nENTITIES:\n${JSON.stringify($input.first().json.entities, null, 2)}\n\nOUTPUT SCHEMA:\n${JSON.stringify($input.first().json.output_schema, null, 2)}\n\nINVOICE TEXT:\n${$input.first().json.invoice_text}\n\nReturn ONLY valid JSON matching the schema.\n`\n}];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -128,
+        -384
+      ],
+      "id": "a97739c6-07b9-47fe-941d-661dbe815983",
+      "name": "Build AI Prompt"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{$json.user_prompt}}\n",
+        "options": {
+          "systemMessage": "{{$json.system_prompt}}\n"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        96,
+        -384
+      ],
+      "id": "093940ff-f335-42de-ad45-740a1f54cbab",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        96,
+        -192
+      ],
+      "id": "d9eb7ac6-8ca7-487e-9758-82d8a16b556a",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "0d8LkSk8oTdiTl8G",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get the AI output from the first input item\nconst raw =\n  $input.first().json.output ||\n  $input.first().json.response ||\n  $input.first().json.text;\n\nif (!raw) {\n  throw new Error(\"❌ No AI output found\");\n}\n\n// Strip ```json fences if present\nconst match = raw.match(/```json\\s*([\\s\\S]*?)\\s*```/);\nconst jsonString = match?.[1] ?? raw;\n\ntry {\n  const parsed = JSON.parse(jsonString);\n\n  // Must return an OBJECT in \"Run Once for All Items\" mode\n  return {\n    extracted_data: parsed\n  };\n\n} catch (e) {\n  throw new Error(\"❌ AI returned invalid JSON\");\n}\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        448,
+        -384
+      ],
+      "id": "70fe2ec6-6182-491e-9840-1a595b03fc10",
+      "name": "Parse AI JSON"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk1": {
+      "main": [
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk": {
+      "main": [
+        [
+          {
+            "node": "Extract from File1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk2": {
+      "main": [
+        [
+          {
+            "node": "Extract from File2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File2": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk3": {
+      "main": [
+        [
+          {
+            "node": "Extract from File3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File3": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields3": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 3
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk4": {
+      "main": [
+        [
+          {
+            "node": "Extract from File4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File4": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields4": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 4
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Read/Write Files from Disk",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Read/Write Files from Disk2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Read/Write Files from Disk3",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Read/Write Files from Disk4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Normalize Payload",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Normalize Payload": {
+      "main": [
+        [
+          {
+            "node": "Build AI Prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build AI Prompt": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Parse AI JSON",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "d28abda1-1137-407e-bf09-3971c8358ab0",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "fd24909c5ad16c63845b92cba62ef80eceb0a27141f1b6ef75cd40ea28349928"
+  },
+  "id": "zBmVsFOpJkxKiPtl",
+  "tags": []
+}

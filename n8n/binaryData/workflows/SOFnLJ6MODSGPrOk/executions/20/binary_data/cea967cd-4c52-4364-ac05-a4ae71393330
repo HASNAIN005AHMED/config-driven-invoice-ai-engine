@@ -1,0 +1,47 @@
+{
+  "header": {
+    "invoice_no": "Invoice Number",
+    "invoice_date": "Invoice Date",
+    "due_date": "Due Date",
+    "kid": "KID",
+    "payment_type": "Payment Type",
+    "currency": "Currency"
+  },
+  "customer": {
+    "customer_no": "Customer Number",
+    "customer_name": "Customer Name",
+    "organization_no": "Organization Number",
+    "customer_email": "Customer Email"
+  },
+  "postal_address": {
+    "line_1": "Postal Address Line 1",
+    "line_2": "Postal Address Line 2",
+    "postal_no": "Postal Code",
+    "city": "City",
+    "country": "Country"
+  },
+  "delivery_address": {
+    "line_1": "Delivery Address Line 1",
+    "line_2": "Delivery Address Line 2",
+    "postal_no": "Postal Code",
+    "city": "City",
+    "country": "Country"
+  },
+  "contact": {
+    "first_name": "Contact First Name",
+    "last_name": "Contact Last Name"
+  },
+  "order_lines": {
+    "prod_no": "Product Number",
+    "prod_name": "Product Name",
+    "description": "Description",
+    "count": "Quantity",
+    "unit_price": "Unit Price",
+    "unit": "Unit",
+    "discount": "Discount",
+    "vat_code": "VAT Code"
+  },
+  "reference_no": "Reference Number",
+  "comment_2": "Comment 2",
+  "paid_amount": "Paid Amount"
+}

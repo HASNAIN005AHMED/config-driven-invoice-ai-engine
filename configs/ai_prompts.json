@@ -1,0 +1,4 @@
+{
+  "system_prompt": "You are an expert invoice extraction agent.",
+  "user_prompt": "Extract invoice data using the provided entities, rules, and output schema. Return only valid JSON."
+}

@@ -1,0 +1,14 @@
+[
+  {
+    "id": "R001",
+    "condition": "total_amount > 100000",
+    "severity": "warning",
+    "message": "High value invoice"
+  },
+  {
+    "id": "R002",
+    "condition": "currency not in ['USD', 'EUR']",
+    "severity": "error",
+    "message": "Unsupported currency"
+  }
+]
