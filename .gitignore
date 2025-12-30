@@ -1,0 +1,4 @@
+n8n/database.sqlite*
+n8n/binaryData/
+n8n/crash.journal
+__pycache__/
